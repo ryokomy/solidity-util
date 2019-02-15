@@ -7,6 +7,11 @@ pragma solidity >0.4.24 <0.6.0;
  */
 
 library Addresses {
+    /**
+     * toBytes cast address to bytes
+     * @param a is address you want to cast to string 
+     * @return b is casted address
+     */
     function toBytes(address a)
         internal
         pure 
@@ -19,5 +24,18 @@ library Addresses {
             mstore(0x40, add(m, 52))
             b := m
         }
+    }
+
+    /**
+     * make_payable makes address to be payable
+     * @param a is address you want to make payable 
+     * @return payable address
+     */
+    function make_payable(address a)
+        internal
+        pure 
+        returns (address payable)
+    {
+        return address(uint160(a));
     }
 }
