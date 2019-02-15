@@ -1,4 +1,4 @@
-pragma solidity ^0.4.24;
+pragma solidity >0.4.24 <0.6.0;
 
 /**
  * Integers Library
@@ -21,13 +21,14 @@ library Integers {
     function toString(uint256 _base) 
         internal
         pure
-        returns (string)
+        returns (string memory)
     {
         bytes memory _tmp = new bytes(32);
+        uint256 _tmpBase = _base;
         uint256 i;
-        for(i = 0;_base > 0;i++) {
-            _tmp[i] = byte((_base % 10) + 48);
-            _base /= 10;
+        for(i = 0; _tmpBase > 0; i++) {
+            _tmp[i] = bytes1((uint8(_tmpBase % 10) + 48));
+            _tmpBase /= 10;
         }
         bytes memory _real = new bytes(i--);
         for(uint256 j = 0; j < _real.length; j++) {

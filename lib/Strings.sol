@@ -1,4 +1,4 @@
-pragma solidity ^0.4.24;
+pragma solidity >0.4.24 <0.6.0;
 
 /**
  * Strings Library
@@ -24,10 +24,10 @@ library Strings {
      * @param _value The value to be the concatenated suffix
      * @return string The resulting string from combinging the base and value
      */
-    function concat(string _base, string _value)
+    function concat(string memory _base, string memory _value)
         internal
         pure
-        returns (string)
+        returns (string memory)
     {
         bytes memory _baseBytes = bytes(_base);
         bytes memory _valueBytes = bytes(_value);
